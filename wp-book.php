@@ -9,6 +9,7 @@
 
 $mpb_prefix = 'wpbook_';
 $mpb_plugin_name = 'WP-Book';
+$wpbook_settings = get_option('wpbook_settings');
 
 load_plugin_textdomain('wp-book', false, dirname( plugin_basename(__FILE__) ) . '/languages/' );
 
@@ -16,6 +17,7 @@ include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK/includes/wpbook_post_typ
 include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK/includes/wpbook_hierarchical_taxonomy.php');
 include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK/includes/wpbook_non_hierarchical_taxonomy.php');
 include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK/includes/wpbook_custom_metabox.php');
+include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK/includes/wpbook_admin_settings_page.php');
 
  
 function wpbook_custom_meta_table(){ 
