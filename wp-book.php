@@ -18,6 +18,7 @@ include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK/includes/wpbook_hierarch
 include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK/includes/wpbook_non_hierarchical_taxonomy.php');
 include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK/includes/wpbook_custom_metabox.php');
 include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK/includes/wpbook_admin_settings_page.php');
+include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK/includes/wpbook_shortcode.php');
 
  
 function wpbook_custom_meta_table(){ 
