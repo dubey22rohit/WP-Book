@@ -3,17 +3,17 @@
  
 
   $labels = array(
-    'name' => __('Categories', 'wp-book'),
-    'singular_name' => __('Category', 'wp-book'),
-    'all_items' => __('All Categories', 'wp-book'),
-    'parent_item' => __('Parent Category','wp-book'),
-    'parent_item_colon' => __('Parent Category:', 'wp-book'),
-    'add_new_item' => __('Add New Category', 'wp-book'),
-    'new_item_name' => __('New Category Name', 'wp-book'),
-    'edit_item' => __('Edit Category', 'wp-book'),
-    'update_item' => __('Update Category', 'wp-book'),
-    'menu_name' => __('Categories', 'wp-book'),
-    'search_items' =>  __('Search Category', 'wp-book'),
+    'name' => __('Book Categories', 'wp-book'),
+    'singular_name' => __('Book Category', 'wp-book'),
+    'all_items' => __('All Book Categories', 'wp-book'),
+    'parent_item' => __('Parent Book Category','wp-book'),
+    'parent_item_colon' => __('Parent Book Category:', 'wp-book'),
+    'add_new_item' => __('Add New Book Category', 'wp-book'),
+    'new_item_name' => __('New Book Category Name', 'wp-book'),
+    'edit_item' => __('Edit Book Category', 'wp-book'),
+    'update_item' => __('Update Book Category', 'wp-book'),
+    'menu_name' => __('Book Categories', 'wp-book'),
+    'search_items' =>  __('Search Book Category', 'wp-book'),
     'orderby' => 'count',
   );   
 
