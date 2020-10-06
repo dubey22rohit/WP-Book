@@ -20,7 +20,7 @@ Creates a custom widget to display books of selected category in the sidebar.
 
 Creates a custom dashboard widget which shows the top 5 book categories (based on count).
 
-#How To Use
+# **How To Use** 
 
 1)Simply clone this repo and download the zip file.
 
