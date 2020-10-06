@@ -19,3 +19,13 @@ Creates a shortcode [book] to display the book(s) information. Shortcode attribu
 Creates a custom widget to display books of selected category in the sidebar.
 
 Creates a custom dashboard widget which shows the top 5 book categories (based on count).
+
+#How To Use
+
+1)Simply clone this repo and download the zip file.
+
+2)Rename the downloaded zip file as WP-Book.
+
+3)Go to your wordpress admin section > Plugins > Add New > Upload Plugin and upload this zip file.
+
+4)Once installed,click on Activate to activate this plugin.
