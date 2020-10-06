@@ -19,7 +19,7 @@ function wpbook_register_post_type() {
  
 	$args = array(
 		'capability_type'    => 'post',
-		'supports'           => array( 'title', 'comments', 'excerpts', 'editor' ),
+		'supports'           => array( 'title', 'excerpts','comments', 'editor' ),
         'labels'             => $labels,
 		'public'             => true,
 		'publicly_queryable' => true,

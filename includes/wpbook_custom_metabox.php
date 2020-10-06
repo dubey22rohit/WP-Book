@@ -1,4 +1,3 @@
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <?php
 function wpbook_custom_metabox(){
     add_meta_box(
@@ -13,64 +12,64 @@ function wpbook_custom_metabox(){
 add_action( 'add_meta_boxes', 'wpbook_custom_metabox' );
 
 function wpbook_meta_callback( $post ){
-    $wpbook_author_name = get_metadata( 'book', $post->ID, 'author-name');
-    $wpbook_price = get_metadata( 'book', $post->ID, 'price');
-    $wpbook_publisher = get_metadata( 'book', $post->ID, 'publisher');
-    $wpbook_year = get_metadata( 'book', $post->ID, 'year');
-    $wpbook_edition = get_metadata( 'book', $post->ID, 'edition');
-    $wpbook_url = get_metadata( 'book', $post->ID, 'url');
+    $wpbook_author_name = get_metadata( 'book', $post->ID, 'author-name',$single=true);
+    $wpbook_price = get_metadata( 'book', $post->ID, 'price',$single=true);
+    $wpbook_publisher = get_metadata( 'book', $post->ID, 'publisher',$single=true);
+    $wpbook_year = get_metadata( 'book', $post->ID, 'year',$single=true);
+    $wpbook_edition = get_metadata( 'book', $post->ID, 'edition',$single=true);
+    $wpbook_url = get_metadata( 'book', $post->ID, 'url',$single=true);
     ?>
     <div>
-        <div class="row">
-            <div class="th">
+        <div class="meta-row">
+            <div class="meta-th">
                 <label for="author_name" class="wpbook-row-title">Author Name : </label>
             </div>
-            <div class="td"> 
+            <div class="meta-td"> 
                 <input type="text" name="author_name" id="author-name" value="<?php echo esc_attr( $wpbook_author_name ); ?>"/>
             </div>
         </div>
 
-        <div class="row">
-            <div class="th">
+        <div class="meta-row">
+            <div class="meta-th">
                 <label for="price" class="wpbook-row-title">Price : </label>
             </div>
-            <div class="td">
+            <div class="meta-td">
                 <input type="number" name="price" id="price" value="<?php echo esc_attr( $wpbook_price ); ?>"/>
             </div>
         </div>
 
-        <div class="row">
-            <div class="th">
+        <div class="meta-row">
+            <div class="meta-th">
                 <label for="publisher" class="wpbook-row-title">Publisher : </label>
             </div>
-            <div class="td">
+            <div class="meta-td">
                 <input type="text" name="publisher" id="publisher" value="<?php echo esc_attr( $wpbook_publisher ); ?>"/>
             </div>
         </div>
 
-        <div class="row">
-            <div class="th">
+        <div class="meta-row">
+            <div class="meta-th">
                 <label for="year" class="wpbook-row-title">Year : </label>
             </div>
-            <div class="td">
+            <div class="meta-td">
                 <input type="number" name="year" id="year" value="<?php echo esc_attr( $wpbook_year ); ?>"/>
             </div>
         </div>
 
-        <div class="row">
-            <div class="th">
+        <div class="meta-row">
+            <div class="meta-th">
                 <label for="edition" class="wpbook-row-title">Edition : </label>
             </div>
-            <div class="td">
+            <div class="meta-td">
                 <input type="text" name="edition" id="edition" value="<?php echo esc_attr( $wpbook_edition ); ?>"/>
             </div>
         </div>
 
-        <div class="row">
-            <div class="th">
+        <div class="meta-row">
+            <div class="meta-th">
                 <label for="url" class="wpbook-row-title">URL : </label>
             </div>
-            <div class="td">
+            <div class="meta-td">
                 <input type="url" name="url" id="url" value="<?php echo esc_attr( $wpbook_url ); ?>"/>
             </div>
         </div>

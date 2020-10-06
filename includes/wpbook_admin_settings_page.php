@@ -1,5 +1,5 @@
 <?php
-function wpb_settings_page() {
+function wpbook_settings_page() {
 
     global $wpbook_settings;
 
