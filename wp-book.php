@@ -82,7 +82,7 @@ function run_wp_book() {
 run_wp_book();
 require_once(ABSPATH.'wp-admin/includes/upgrade.php');
 $mpb_prefix = 'wpbook_';
-$mpb_plugin_name = 'WP-Book';
+$mpb_plugin_name = 'wp-book';
 $wpbook_settings = get_option('wpbook_settings');
 
 load_plugin_textdomain('wp-book', false, dirname( plugin_basename(__FILE__) ) . '/languages/' );
@@ -93,6 +93,9 @@ include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK/includes/wpbook_non_hier
 include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK/includes/wpbook_custom_metabox.php');
 include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK/includes/wpbook_admin_settings_page.php');
 include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK/includes/wpbook_shortcode.php');
+include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK/includes/wpbook_category_widget.php');
+include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK/includes/wpbook_selected_category_display.php');
+include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK/includes/wpbook_dashboard_widget.php');
 
  
 function wpbook_custom_meta_table(){ 
