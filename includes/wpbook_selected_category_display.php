@@ -15,8 +15,8 @@ class Wpbook_Book_Display_Widget extends WP_Widget {
         }
         ?>
         <p>
-            <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Title : ' ); ?>:</label> 
-            <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+            <label for="<?php echo esc_attr($this->get_field_id( 'title' )); ?>"><?php esc_html_e( 'Title : ' ); ?>:</label> 
+            <input class="widefat" id="<?php echo esc_attr($this->get_field_id( 'title' )); ?>" name="<?php echo esc_attr($this->get_field_name( 'title' )); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
         </p>
 
         <?php
@@ -39,9 +39,9 @@ class Wpbook_Book_Display_Widget extends WP_Widget {
 	<?php foreach ( $categories as $category ) { ?>
 
 		<li>
-            <input type="checkbox" id="<?php echo $this->get_field_id( 'selected_categories' ); ?>[<?php echo $category->term_id; ?>]" 
-            name="<?php echo esc_attr( $this->get_field_name( 'selected_categories' ) ); ?>[]" value="<?php echo $category->term_id; ?>"  <?php checked( ( in_array( $category->term_id, $selected_categories ) ) ? $category->term_id : '', $category->term_id ); ?> />
-            <label for="<?php echo $this->get_field_id( 'selected_categories' ); ?>[<?php echo $category->term_id; ?>]"><?php echo $category->name; ?> (<?php echo $category->count; ?>)</label>
+            <input type="checkbox" id="<?php echo esc_attr($this->get_field_id( 'selected_categories' )); ?>[<?php echo esc_attr($category->term_id); ?>]" 
+            name="<?php echo esc_attr( $this->get_field_name( 'selected_categories' ) ); ?>[]" value="<?php echo esc_attr($category->term_id); ?>"  <?php checked( ( in_array( $category->term_id, $selected_categories ) ) ? $category->term_id : '', $category->term_id ); ?> />
+            <label for="<?php echo esc_attr($this->get_field_id( 'selected_categories' )); ?>[<?php echo esc_attr($category->term_id); ?>]"><?php echo esc_attr($category->name); ?> (<?php echo esc_attr($category->count); ?>)</label>
 	    </li>
 
 	<?php } ?>
@@ -56,7 +56,7 @@ class Wpbook_Book_Display_Widget extends WP_Widget {
         return $inst;
     }
     public function widget( $args, $inst ) {
-        echo $args[ 'before_widget' ];?>
+        echo esc_attr($args[ 'before_widget' ]);?>
         <h2 class="widget-title">
                 <?php
                     if ( isset( $inst[ 'title' ] ) ) {
@@ -64,17 +64,17 @@ class Wpbook_Book_Display_Widget extends WP_Widget {
                     } else {
                         $title = 'Book';
                     }
-                    echo $title;
+                    echo esc_attr($title);
                 ?>
         </h2>
 
         <?php
-        if ( ! empty( $inst[ 'selected_categories' ] ) && is_array( $inst[ 'selected_categories' ] ) ){ 
+        if ( ! empty( $inst[ 'selected_categories' ] ) && is_array( $inst[ 'selected_categories' ] ) ) { 
             global $num_books; 
             if ( $num_books[ 'num_of_books' ] == '0' ) {
                 return;
             }
-            $Display_posts = get_posts( array( 
+            $display_posts = get_posts( array( 
                 'post_type'   => 'book',
                 'post_status' => 'publish',
                 'numberposts' => $num_books[ 'num_of_books' ],
@@ -88,22 +88,22 @@ class Wpbook_Book_Display_Widget extends WP_Widget {
             ) );
         ?>
             <ul>
-                <?php foreach ( $Display_posts as $Display_post ) { ?>
-                    <li><a href="<?php echo get_permalink( $Display_post->ID ); ?>">
-                            <?php echo $Display_post->post_title; ?>
+                <?php foreach ( $display_posts as $display_post ) { ?>
+                    <li><a href="<?php echo esc_attr(get_permalink( $display_post->ID )); ?>">
+                            <?php echo esc_attr($display_post->post_title); ?>
                         </a>
                     </li>		
                 <?php } ?>
             </ul>
             <?php 
             
-        }else{
+        } else {
             echo esc_html__( 'No Selected Posts!', 'text_domain' );	
         }
-        echo $args[ 'after_widget' ];
+        echo $args[ 'after_widget' ];//phpcs:ignore
     }
 }
-add_action('widgets_init', function(){
+add_action('widgets_init', function() {
     register_widget('Wpbook_Book_Display_Widget');
 });
     

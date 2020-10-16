@@ -31,22 +31,22 @@ $wpbook_settings = get_option('wpbook_settings');
 
 load_plugin_textdomain('wp-book', false, dirname( plugin_basename(__FILE__) ) . '/languages/' );
 
-include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK/includes/wpbook_post_type.php');   
-include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK/includes/wpbook_hierarchical_taxonomy.php');
-include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK/includes/wpbook_non_hierarchical_taxonomy.php');
-include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK/includes/wpbook_custom_metabox.php');
-include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK/includes/wpbook_admin_settings_page.php');
-include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK/includes/wpbook_shortcode.php');
-include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK/includes/wpbook_category_widget.php');
-include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK/includes/wpbook_selected_category_display.php');
-include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK/includes/wpbook_dashboard_widget.php');
+include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK-master/includes/wpbook_post_type.php');   
+include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK-master/includes/wpbook_hierarchical_taxonomy.php');
+include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK-master/includes/wpbook_non_hierarchical_taxonomy.php');
+include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK-master/includes/wpbook_custom_metabox.php');
+include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK-master/includes/wpbook_admin_settings_page.php');
+include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK-master/includes/wpbook_shortcode.php');
+include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK-master/includes/wpbook_category_widget.php');
+include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK-master/includes/wpbook_selected_category_display.php');
+include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK-master/includes/wpbook_dashboard_widget.php');
 
 
-function wpbook_custom_meta_table(){ 
+function wpbook_custom_meta_table() { 
     global $wpdb;
     $table_name = $wpdb->prefix.'bookmeta';
     
-    if( $wpdb->get_var("SHOW TABLES LIKE '{$table_name}'") != $table_name){
+    if ( $wpdb->get_var("SHOW TABLES LIKE '{$table_name}'") != $table_name) { //phpcs:ignore
         
         $sql = "CREATE TABLE  $table_name (
             meta_id INTEGER (10) UNSIGNED AUTO_INCREMENT,

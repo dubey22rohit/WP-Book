@@ -14,26 +14,26 @@ function wpbook_settings_page() {
             <p>
                 <?php $currency_choices = array('INR','USD','EUR'); ?>
                 <select id="wpbook_settings[currency]" name="wpbook_settings[currency]">
-                    <?php foreach($currency_choices as $currecy_choice){ ?>
+                    <?php foreach ($currency_choices as $currecy_choice) { ?>
                         <?php 
-                        if($wpbook_settings['currency'] == $currecy_choice) {
+                        if ($wpbook_settings['currency'] == $currecy_choice) {//// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                             $selected = 'selected="selected"'; 
-                        } 
-                        else{
+                        }  //phpcs:ignore
+                        else {
                              $selected=''; 
                         } 
                     ?>
-                        <option value="<?php echo $currecy_choice; ?>"<?php echo $selected; ?>> <?php echo $currecy_choice;?></option>
+                        <option value="<?php echo esc_attr($currecy_choice); ?>"<?php echo esc_attr($selected); ?>> <?php echo esc_attr($currecy_choice);?></option>
                     <?php } ?>
                 </select>
-                <label class="description" for="wpbook_settings[number_of_books]"><?php _e('Select Currency','wp-book'); ?></label>
+                <label class="description" for="wpbook_settings[number_of_books]"><?php esc_html_e('Select Currency','wp-book'); ?></label>
             </p>
 
             <h2>Number of Books Displayed Per Page</h2>
             
             <p>
-                <input id="wpbook_settings[number_of_books]" name="wpbook_settings[number_of_books]" type="number" value="<?php echo $wpbook_settings['number_of_books']; ?>" />
-                <label class="description" for="wpbook_settings[number_of_books]"><?php _e('Please Enter Number of Books Per Page','wp-book'); ?></label>
+                <input id="wpbook_settings[number_of_books]" name="wpbook_settings[number_of_books]" type="number" value="<?php echo ($wpbook_settings)['number_of_books']; ?>" />
+                <label class="description" for="wpbook_settings[number_of_books]"><?php esc_html_e('Please Enter Number of Books Per Page','wp-book'); ?></label>
             </p>
 
             <p>
@@ -43,7 +43,7 @@ function wpbook_settings_page() {
         </form>
 	</div>
 	<?php
-	echo ob_get_clean();
+	echo ob_get_clean();//phpcs:ignore
 }
 function wpbook_add_admin_settings() {
 	add_menu_page(
@@ -58,7 +58,7 @@ function wpbook_add_admin_settings() {
 }
 add_action('admin_menu', 'wpbook_add_admin_settings');
 
-function wpbook_register_admin_settings(){
+function wpbook_register_admin_settings() {
     register_setting('wpbook_settings_group', 'wpbook_settings');
 }
 add_action('admin_init', 'wpbook_register_admin_settings');

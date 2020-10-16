@@ -1,5 +1,5 @@
 <?php 
-    function wpbook_shortcode( $arrtibs ){
+    function wpbook_shortcode( $arrtibs ) {
         $arrtibs = shortcode_arrtibs(
             array(
                 'book_ID' => '',
@@ -18,10 +18,10 @@
                 'author' => $arrtibs['author_name'],
             );
             
-            if($arrtibs['book_ID'] != ''){
+            if ($arrtibs['book_ID'] != '') {
                 $args['book_ID'] = $arrtibs['book_ID'];
             }
-            if($arrtibs['category'] != ''){
+            if ($arrtibs['category'] != '') {
                 $args['tax_query'] = array(
                     array(
                         'taxonomy' => 'book_category',
@@ -31,7 +31,7 @@
                     ),
                 );
             }
-            if($arrtibs['tag'] != ''){
+            if ($arrtibs['tag'] != '') {
                 $args[ 'tax_query' ] = array(
                     array(
                         'taxonomy' => 'book_tags',
@@ -45,13 +45,13 @@
     }
     add_shortcode('book','wpbook_shortcode'); 
     
-    function wpbook_shortcode_function( $args ){
+    function wpbook_shortcode_function( $args ) {
         
         global $wpbook_settings;
         
         $shortcode_query = new WP_Query( $args );
         if ( $shortcode_query->have_posts() ) {
-            while($shortcode_query->have_posts()){
+            while ($shortcode_query->have_posts()) {
                 $shortcode_query->the_post();
                 
                 //retriving the meta info of book from database
@@ -65,52 +65,52 @@
                 ?>
                 <ul>
                 <?php
-                    if ( get_the_title() != ''){
+                    if ( get_the_title() != '') {
                         ?>
-                        <li>Title: <a href="<?php get_post_permalink(); ?>"><?php echo get_the_title(); ?></a></li>
+                        <li>Title: <a href="<?php get_post_permalink(); ?>"><?php echo esc_attr(get_the_title()); ?></a></li>
                         <?php
                     }
-                    if( $wpbook_price != '' ){
+                    if ( $wpbook_price != '' ) {
                         ?>
-                        <li>Price: <?php echo $wpbook_price . ' ' . $wpbook_settings[ 'currency' ] ; ?></li>
+                        <li>Price: <?php echo esc_attr($wpbook_price) . ' ' . esc_attr($wpbook_settings)[ 'currency' ] ; ?></li>
                         <?php
                     }
-                    if( $wpbook_author_name != ''  ){
+                    if ( $wpbook_author_name != ''  ) {
                         ?>
-                        <li>Author: <?php echo $wpbook_author_name; ?></li>
+                        <li>Author: <?php echo esc_attr($wpbook_author_name); ?></li>
                         <?php
                     }
-                    if( $wpbook_publisher != '' ){
+                    if ( $wpbook_publisher != '' ) {
                         ?>
-                        <li>Publisher: <?php echo $wpbook_publisher; ?></li>
+                        <li>Publisher: <?php echo esc_attr($wpbook_publisher); ?></li>
                         <?php
                     }
-                    if( $wpbook_year != '' ){
+                    if ( $wpbook_year != '' ) {
                         ?>
-                        <li>Year: <?php echo $wpbook_year; ?></li>
+                        <li>Year: <?php echo esc_attr($wpbook_year); ?></li>
                         <?php
                     }
                     
-                    if( $wpbook_edition != '' ){
+                    if ( $wpbook_edition != '' ) {
                         ?>
-                        <li>Edition: <?php echo $wpbook_edition; ?></li>
+                        <li>Edition: <?php echo esc_attr($wpbook_edition); ?></li>
                         <?php
                     }
-                    if( $wpbook_url  != '' ){
+                    if ( $wpbook_url  != '' ) {
                         ?>
-                        <li>Url: <?php echo $wpbook_url; ?></li>
+                        <li>Url: <?php echo esc_attr($wpbook_url); ?></li>
                         <?php
                     }
                     if ( get_the_content() != '' ) {
                         ?>
-                        <li>Content: <?php echo get_the_content(); ?></li>
+                        <li>Content: <?php echo esc_attr(get_the_content()); ?></li>
                         <?php
                     }
                 ?>
                 </ul>
                 <?php
             }
-        }else {
+        } else {
             ?>
             <h1>No Books Found</h1>
             <?php

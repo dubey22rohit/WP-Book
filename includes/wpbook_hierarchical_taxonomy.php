@@ -30,8 +30,7 @@ register_taxonomy('book_category',array('book'), $args);
 }
 add_action( 'init', 'wpbook_hierarchical_taxonomy' );
 
-function wpbook_order_by_args( $args, $taxonomies ) 
-{
+function wpbook_order_by_args( $args, $taxonomies ) {
     
     $args['orderby'] = 'count';
     $args['order'] = 'DESC';

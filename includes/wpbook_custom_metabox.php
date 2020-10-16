@@ -1,5 +1,5 @@
-<?php
-function wpbook_custom_metabox(){
+<?php 
+function wpbook_custom_metabox() {
     add_meta_box(
         'wpbook_meta_box',
         __('Book Information', 'wp-book'),
@@ -11,7 +11,7 @@ function wpbook_custom_metabox(){
 
 add_action( 'add_meta_boxes', 'wpbook_custom_metabox' );
 
-function wpbook_meta_callback( $post ){
+function wpbook_meta_callback( $post ) {
     $wpbook_author_name = get_metadata( 'book', $post->ID, 'author-name',$single=true);
     $wpbook_price = get_metadata( 'book', $post->ID, 'price',$single=true);
     $wpbook_publisher = get_metadata( 'book', $post->ID, 'publisher',$single=true);
@@ -77,35 +77,36 @@ function wpbook_meta_callback( $post ){
     </div>
     <?php
 }
-function wpbook_custom_book_info( $post_id ){
+function wpbook_custom_book_info( $post_id ) {
     
-    if( ! isset( $_POST['wpbook_book_info'] ) || ! wp_verify_nonce( $_POST['wpbook_book_info'], 'wpbook_custom_book_info' ) ){
+    if ( ! isset( $_POST['wpbook_book_info'] ) || ! wp_verify_nonce( $_POST['wpbook_book_info'], 'wpbook_custom_book_info' ) ) {
         return $post_id;
     }
 
-    if( isset( $_POST['author_name'] ) ){
+    if ( isset( $_POST['author_name'] )) {
         update_metadata('book', $post_id, 'author-name', sanitize_text_field($_POST['author_name']) );
     }
 
-    if( isset( $_POST['price'] ) ){
+    if ( isset( $_POST['price'] ) ) {
         update_metadata('book', $post_id, 'price', sanitize_text_field($_POST['price']) );
     }
 
-    if( isset( $_POST['publisher'] ) ){
+    if ( isset( $_POST['publisher'] )) {
         update_metadata('book', $post_id, 'publisher', sanitize_text_field($_POST['publisher']) );
     }
 
-    if( isset( $_POST['year'] ) ){
+    if ( isset( $_POST['year'] )) {
         update_metadata('book', $post_id, 'year', sanitize_text_field($_POST['year']) );
     } 
 
-    if( isset( $_POST['edition'] ) ){
+    if ( isset( $_POST['edition'] )) {
         update_metadata('book', $post_id, 'edition', sanitize_text_field($_POST['edition']) );
     }
 
-    if( isset( $_POST['url'] ) ){
+    if ( isset( $_POST['url'] ) ) {
         update_metadata('book', $post_id, 'url', sanitize_text_field($_POST['url']) );
     }
     
 }
 add_action( 'save_post', 'wpbook_custom_book_info');
+?>
