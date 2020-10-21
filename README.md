@@ -24,11 +24,9 @@ Creates a custom dashboard widget which shows the top 5 book categories (based o
 
 1)Simply clone this repo and download the zip file.
 
-2)Rename the downloaded zip file as WP-Book.
+2)Go to your wordpress admin section > Plugins > Add New > Upload Plugin and upload this zip file.
 
-3)Go to your wordpress admin section > Plugins > Add New > Upload Plugin and upload this zip file.
-
-4)Once installed,click on Activate to activate this plugin.
+3)Once installed,click on Activate to activate this plugin.
 
 # **Screenshots**
 ![Plugin Example Image 1](https://github.com/dubey22rohit/WP-Book/blob/master/wp-book1.PNG)
