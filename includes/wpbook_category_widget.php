@@ -11,7 +11,7 @@ class Wpbook_Category_Widget extends WP_Widget {
 
     }
 
-    function CategoryForm ( $inst ) {
+    public function CategoryForm ( $inst ) {
         $title 		= esc_attr($inst['title']);
 	    $number	= esc_attr($inst['number']);
 	    $taxonomy	= esc_attr($inst['taxonomy']);
@@ -37,15 +37,15 @@ class Wpbook_Category_Widget extends WP_Widget {
 	    </p>
 	    <?php
 }
-    function update ( $new_inst, $old_inst) {
+    public function update ( $new_inst, $old_inst) {
 	    $inst = $old_inst;
 	    $inst['title'] = strip_tags($new_inst['title']);
 	    $inst['number'] = strip_tags($new_inst['number']);
 	    $inst['taxonomy'] = $new_inst['taxonomy'];
 	    return $inst;
     }
-    function widget ( $args, $inst) {
-	    extract( $args );
+    public function widget ( $args, $inst) {
+	    extract( $args );//phpcs:ignore
 	    $title 		= apply_filters('widget_title', $inst['title']);
 	    $number 	= $inst['number'];
 	    $taxonomy 	= $inst['taxonomy'];
@@ -56,18 +56,19 @@ class Wpbook_Category_Widget extends WP_Widget {
 	    );
 	    $categories = get_categories($args);
 	    ?>
-		<?php echo $before_widget; ?>
-	    <?php if ( $title ) { echo $before_title . $title . $after_title; } ?>
+		<?php echo esc_attr($before_widget); ?>
+	    <?php if ( $title ) { 
+			echo esc_attr($before_title) . $title . $after_title; } ?>
 		<ul>
 		<?php foreach ($categories as $category) { ?>
-		<li><a href="<?php echo get_term_link($category->slug, $taxonomy); ?>" title="<?php sprintf( __( "View all posts in %s" ), $category->name ); ?>"><?php echo $category->name; ?></a></li>
+		<li><a href="<?php echo esc_attr(get_term_link($category->slug, $taxonomy)); ?>" title="<?php sprintf( __( 'View all posts in %s' ), $category->name ); ?>"><?php echo $category->name; ?></a></li>
 		<?php } ?>
 		</ul>
-    	<?php echo $after_widget; ?>
+    	<?php echo esc_attr($after_widget); ?>
 	<?php
     }
 
 }
-add_action('widgets_init', function(){
+add_action('widgets_init', function() {
     register_widget('Wpbook_Category_Widget');
 }); 

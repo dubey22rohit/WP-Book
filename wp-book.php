@@ -29,25 +29,26 @@ $mpb_prefix = 'wpbook_';
 $mpb_plugin_name = 'wp-book';
 $wpbook_settings = get_option('wpbook_settings');
 
-load_plugin_textdomain('wp-book', false, dirname( plugin_basename(__FILE__) ) . '/languages/' );
+load_plugin_textdomain('wp-book', false, dirname(plugin_basename(__FILE__)) . '/languages/');
 
-include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK-master/includes/wpbook_post_type.php');   
-include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK-master/includes/wpbook_hierarchical_taxonomy.php');
-include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK-master/includes/wpbook_non_hierarchical_taxonomy.php');
-include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK-master/includes/wpbook_custom_metabox.php');
-include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK-master/includes/wpbook_admin_settings_page.php');
-include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK-master/includes/wpbook_shortcode.php');
-include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK-master/includes/wpbook_category_widget.php');
-include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK-master/includes/wpbook_selected_category_display.php');
-include(plugin_dir_path( dirname( __FILE__ ) ).'WP-BOOK-master/includes/wpbook_dashboard_widget.php');
+include plugin_dir_path(dirname(__FILE__)) . 'WP-BOOK-master/includes/wpbook_post_type.php';
+include plugin_dir_path(dirname(__FILE__)) . 'WP-BOOK-master/includes/wpbook_hierarchical_taxonomy.php';
+include plugin_dir_path(dirname(__FILE__)) . 'WP-BOOK-master/includes/wpbook_non_hierarchical_taxonomy.php';
+include plugin_dir_path(dirname(__FILE__)) . 'WP-BOOK-master/includes/wpbook_custom_metabox.php';
+include plugin_dir_path(dirname(__FILE__)) . 'WP-BOOK-master/includes/wpbook_admin_settings_page.php';
+include plugin_dir_path(dirname(__FILE__)) . 'WP-BOOK-master/includes/wpbook_shortcode.php';
+include plugin_dir_path(dirname(__FILE__)) . 'WP-BOOK-master/includes/wpbook_category_widget.php';
+include plugin_dir_path(dirname(__FILE__)) . 'WP-BOOK-master/includes/wpbook_selected_category_display.php';
+include plugin_dir_path(dirname(__FILE__)) . 'WP-BOOK-master/includes/wpbook_dashboard_widget.php';
 
 
-function wpbook_custom_meta_table() { 
+function wpbook_custom_meta_table()
+{
     global $wpdb;
-    $table_name = $wpdb->prefix.'bookmeta';
-    
-    if ( $wpdb->get_var("SHOW TABLES LIKE '{$table_name}'") != $table_name) { //phpcs:ignore
-        
+    $table_name = $wpdb->prefix . 'bookmeta';
+
+    if ($wpdb->get_var("SHOW TABLES LIKE '{$table_name}'") != $table_name) { //phpcs:ignore
+
         $sql = "CREATE TABLE  $table_name (
             meta_id INTEGER (10) UNSIGNED AUTO_INCREMENT,
             book_id bigint(20) NOT NULL DEFAULT '0',
@@ -57,22 +58,23 @@ function wpbook_custom_meta_table() {
             KEY book_id (book_id),
             KEY meta_key(meta_key)
         )";
-    require_once(ABSPATH.'wp-admin/includes/upgrade.php');  
+        require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 
-    dbDelta($sql);
+        dbDelta($sql);
     }
 }
-register_activation_hook( __FILE__, 'wpbook_custom_meta_table' );
+register_activation_hook(__FILE__, 'wpbook_custom_meta_table');
 
-function wpbook_register_custom_table() {
+function wpbook_register_custom_table()
+{
 
     global $wpdb;
 
     $wpdb->bookmeta = $wpdb->prefix . 'bookmeta';
     $wpdb->tables[] = 'bookmeta';
-    
+
     return;
 }
 
-add_action( 'init', 'wpbook_register_custom_table' );
-add_action( 'switch_blog', 'wpbook_register_custom_table' );
+add_action('init', 'wpbook_register_custom_table');
+add_action('switch_blog', 'wpbook_register_custom_table');

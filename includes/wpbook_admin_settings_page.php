@@ -32,7 +32,7 @@ function wpbook_settings_page() {
             <h2>Number of Books Displayed Per Page</h2>
             
             <p>
-                <input id="wpbook_settings[number_of_books]" name="wpbook_settings[number_of_books]" type="number" value="<?php echo ($wpbook_settings)['number_of_books']; ?>" />
+                <input id="wpbook_settings[number_of_books]" name="wpbook_settings[number_of_books]" type="number" value="<?php echo esc_attr($wpbook_settings['number_of_books']); ?>" />
                 <label class="description" for="wpbook_settings[number_of_books]"><?php esc_html_e('Please Enter Number of Books Per Page','wp-book'); ?></label>
             </p>
 
